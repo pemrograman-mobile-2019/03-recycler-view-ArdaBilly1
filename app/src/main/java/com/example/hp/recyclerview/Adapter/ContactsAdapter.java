@@ -39,6 +39,13 @@ public class ContactsAdapter extends
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
+        Contact itemContact = mContacts.get(i);
+        TextView textView = viewHolder.nameTextView;
+        textView.setText(itemContact.getname());
+
+        Button buttonContact = viewHolder.messageButton;
+        buttonContact.setText(itemContact.isOnline()? "Massage" : "offline");
+        buttonContact.setEnabled(itemContact.isOnline());
     }
 
     @Override
@@ -60,6 +67,7 @@ public class ContactsAdapter extends
 
             nameTextView = (TextView) itemView.findViewById(R.id.contact_name);
             messageButton = (Button) itemView.findViewById(R.id.message_button);
+
         }
 
     }
